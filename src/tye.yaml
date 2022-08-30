@@ -1,0 +1,27 @@
+name: tyedemo
+ingress:
+  - name: ingress
+    bindings:
+      - port: 8080
+    rules:
+      - path: /module1
+        service: module1
+      - path: /module2
+        service: module2
+      - host: module1.fast2ai.com
+        service: module1
+      - host: module2.fast2ai.com
+        service: module2
+services:
+- name: backend
+  project: backend/backend.csproj
+  bindings:
+    - port: 7000
+- name: module1
+  project: module1/module1.csproj
+  bindings:
+    - port: 7100
+- name: module2
+  project: module2/module2.csproj
+  bindings:
+    - port: 7110
