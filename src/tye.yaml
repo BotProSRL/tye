@@ -4,6 +4,10 @@ ingress:
     bindings:
       - port: 8080
     rules:
+      - path: /
+        service: authentication
+      - path: /api
+        service: backend
       - path: /module1
         service: module1
       - path: /module2
@@ -17,6 +21,10 @@ services:
   project: backend/backend.csproj
   bindings:
     - port: 7000
+- name: authentication
+  project: authentication/authentication.csproj
+  bindings:
+    - port: 7001
 - name: module1
   project: module1/module1.csproj
   bindings:

@@ -1,6 +1,6 @@
 ﻿@page "/fetchdata"
 @inject HttpClient Http
-@using module2.Shared
+@using authentication.Shared
 
 <PageTitle>Weather forecast</PageTitle>
 
@@ -37,7 +37,7 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("/api/WeatherForecast");
+        forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("sample-data/weather.json");
     }
     public class WeatherForecast
     {
